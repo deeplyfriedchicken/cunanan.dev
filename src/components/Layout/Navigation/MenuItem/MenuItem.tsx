@@ -1,10 +1,10 @@
 import React from 'react';
 
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 import { NavLink } from 'react-router-dom';
-import { Link, Theme } from '@material-ui/core';
+import { Link, Theme } from '@mui/material';
 
-export type TMenuItemProps = {
+export type TMenuItem = {
   text: string;
   link?: string;
   exact?: boolean;
@@ -12,7 +12,7 @@ export type TMenuItemProps = {
   linkProps?: any;
 };
 
-const useStyles = makeStyles<Theme, Pick<TMenuItemProps, 'text'>>({
+const useStyles = makeStyles<Theme, Pick<TMenuItem, 'text'>>({
   root: ({ text }) => ({
     width: '150px',
     textTransform: 'uppercase',
@@ -42,13 +42,13 @@ const useStyles = makeStyles<Theme, Pick<TMenuItemProps, 'text'>>({
   }),
 });
 
-const MenuItem = ({
+function MenuItem({
   link,
   text,
   exact = false,
   useLink = false,
   linkProps,
-}: TMenuItemProps) => {
+}: TMenuItem) {
   const classes = useStyles({ text });
 
   return (
@@ -62,6 +62,6 @@ const MenuItem = ({
       )}
     </li>
   );
-};
+}
 
 export default MenuItem;

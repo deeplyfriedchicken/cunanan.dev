@@ -1,6 +1,10 @@
-import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
+import {
+  createTheme,
+  ThemeProvider,
+  StyledEngineProvider,
+} from '@mui/material/styles';
 import ReactGA from 'react-ga';
-import { CssBaseline } from '@material-ui/core';
+import CssBaseline from '@mui/material/CssBaseline';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { PersistGate } from 'redux-persist/integration/react';
@@ -16,10 +20,10 @@ if (REACT_APP_TRACKING_ID) {
   ReactGA.pageview(window.location.pathname + window.location.search);
 }
 
-const theme = createMuiTheme({
+const theme = createTheme({
   palette: {
     background: {
-      default: 'fff',
+      default: '#ffffff',
     },
     primary: {
       light: '#ffffff',
@@ -46,10 +50,12 @@ function App() {
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <div className="App">
-            <CssBaseline />
-            <ThemeProvider theme={theme}>
-              <Container />
-            </ThemeProvider>
+            <StyledEngineProvider injectFirst>
+              <ThemeProvider theme={theme}>
+                <CssBaseline />
+                <Container />
+              </ThemeProvider>
+            </StyledEngineProvider>
           </div>
         </PersistGate>
       </Provider>
