@@ -1,12 +1,12 @@
 import { ReactNode } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 
-import { Container, Theme, Typography } from '@material-ui/core';
+import { Container, Theme, Typography } from '@mui/material';
 import { IProject } from '../../../../interfaces';
 
-export type TProjectHeaderProps = {
+export type TProjectHeader = {
   navigation: ReactNode;
   projects: IProject[];
 };
@@ -35,7 +35,7 @@ const useStyles = makeStyles<Theme, IProject>({
   },
 });
 
-const ProjectHeader = ({ navigation, projects }: TProjectHeaderProps) => {
+function ProjectHeader({ navigation, projects }: TProjectHeader) {
   const { projectSlug } = useParams<{ projectSlug: string }>();
   const project = projects?.find((p) => p.slug === projectSlug);
   const classes = useStyles(project!);
@@ -52,6 +52,6 @@ const ProjectHeader = ({ navigation, projects }: TProjectHeaderProps) => {
       </Container>
     </div>
   );
-};
+}
 
 export default ProjectHeader;

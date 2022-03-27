@@ -1,6 +1,6 @@
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 
-export type TImageProps = {
+export type TImage = {
   alt: string;
   src: string;
   title: string;
@@ -24,7 +24,7 @@ const useStylesImage = makeStyles({
   },
 });
 
-const Image = ({ alt, src, title }: TImageProps) => {
+function Image({ alt, src, title }: TImage) {
   const classes = useStylesImage();
   return (
     <span className={classes.root}>
@@ -32,6 +32,6 @@ const Image = ({ alt, src, title }: TImageProps) => {
       <span className={classes.caption}>{title}</span>
     </span>
   );
-};
+}
 
 export default Image;

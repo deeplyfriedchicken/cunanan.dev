@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 
-import { Button } from '@material-ui/core';
+import { Button } from '@mui/material';
 
 const useStyles = makeStyles({
   root: {
@@ -15,7 +15,7 @@ const useStyles = makeStyles({
   },
 });
 
-const OutlinedButton = ({ text, ...props }) => {
+function OutlinedButton({ text, ...props }) {
   const classes = useStyles();
 
   return (
@@ -28,7 +28,7 @@ const OutlinedButton = ({ text, ...props }) => {
       {text}
     </Button>
   );
-};
+}
 
 OutlinedButton.propTypes = {
   text: PropTypes.string.isRequired,

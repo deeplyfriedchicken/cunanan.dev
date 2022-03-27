@@ -1,21 +1,19 @@
 import React from 'react';
 
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 
 import { useParams } from 'react-router-dom';
 
 import { Helmet } from 'react-helmet';
 
-import {
-  Grid, Link, List, ListItem, Typography,
-} from '@material-ui/core';
+import { Grid, Link, List, ListItem, Typography } from '@mui/material';
 import Markdown from '../Markdown/Markdown';
 import SectionHeading from '../Common/SectionHeading/SectionHeading';
 
 import { IProject } from '../../interfaces';
 
-export type TProjectContainerProps = {
-  projects?: IProject[];
+export type TProjectContainer = {
+  projects: IProject[];
 };
 
 const useStyles = makeStyles({
@@ -52,104 +50,104 @@ const useStyles = makeStyles({
   },
 });
 
-const ProjectView = ({ projects }: TProjectContainerProps) => {
+function ProjectView({ projects }: TProjectContainer) {
   const classes = useStyles();
   const { projectSlug } = useParams<{ projectSlug: string }>();
   const project = projects?.find((p) => p.slug === projectSlug);
 
-  if (!project) {
-    return <div />;
+  if (project) {
+    return (
+      <>
+        <Helmet>
+          <title>{`Kevin Cunanan | Portfolio | ${project?.name}`}</title>
+          <meta
+            property="og:title"
+            content={`Kevin Cunanan | Portfolio | ${project?.name}`}
+          />
+          <meta property="og:description" content={project?.headline} />
+          <meta property="og:image" content={project?.logo?.url} />
+          <meta property="og:url" content={`/projects/${project?.slug}`} />
+          <meta
+            name="twitter:image:alt"
+            content={`${project?.name} Application Logo`}
+          />
+
+          <meta
+            property="og:site_name"
+            content="Kevin Cunanan | Software Engineer Portfolio"
+          />
+        </Helmet>
+        <Grid container className={classes.root} spacing={2}>
+          <Grid item xs={12} sm={3}>
+            <img
+              className={classes.logo}
+              src={project?.logo?.url}
+              alt={project?.name}
+              referrerPolicy="no-referrer"
+            />
+            <List>
+              <ListItem className={classes.item}>
+                <Link href="#overview">Project Overview</Link>
+              </ListItem>
+              <ListItem className={classes.item}>
+                <Link href="#introduction">Introduction</Link>
+              </ListItem>
+              <ListItem className={classes.item}>
+                <Link href="#requirements">Requirements</Link>
+              </ListItem>
+              <ListItem className={classes.item}>
+                <Link href="#architecture">Architecture</Link>
+              </ListItem>
+              <ListItem className={`${classes.item} ${classes.subItem}`}>
+                <Link href="#backend">Backend</Link>
+              </ListItem>
+              <ListItem className={`${classes.item} ${classes.subItem}`}>
+                <Link href="#frontend">Frontend</Link>
+              </ListItem>
+              <ListItem className={`${classes.item} ${classes.subItem}`}>
+                <Link href="#aws">AWS Architecture</Link>
+              </ListItem>
+              <ListItem className={`${classes.item} ${classes.subItem}`}>
+                <Link href="#ci+cd">
+                  Continuous Integration / Continuous Delivery
+                </Link>
+              </ListItem>
+              <ListItem className={classes.item}>
+                <Link href="#ui">UI</Link>
+              </ListItem>
+            </List>
+          </Grid>
+          <Grid className={classes.content} item xs={12} sm={9}>
+            <div id="overview" />
+            <SectionHeading text="Project Overview" size="36px" />
+            <Markdown source={project?.tldr} escapeHtml={false} />
+
+            <div id="tools" />
+            <Typography className={classes.tools}>Tools Used</Typography>
+            <Markdown source={project.tools} escapeHtml={false} />
+
+            <div id="introduction" />
+            <SectionHeading text="Introduction" size="36px" />
+            <Markdown source={project.introduction} escapeHtml={false} />
+
+            <div id="requirements" />
+            <SectionHeading text="Requirements" size="36px" />
+            <Markdown source={project?.requirements} escapeHtml={false} />
+
+            <div id="architecture" />
+            <SectionHeading text="Architecture" size="36px" />
+            <Markdown source={project?.architecture} escapeHtml={false} />
+
+            <div id="ui" />
+            <SectionHeading text="UI" size="36px" />
+            <Markdown source={project?.wireframes_ui} escapeHtml={false} />
+          </Grid>
+        </Grid>
+      </>
+    );
   }
 
-  return (
-    <>
-      <Helmet>
-        <title>{`Kevin Cunanan | Portfolio | ${project?.name}`}</title>
-        <meta
-          property="og:title"
-          content={`Kevin Cunanan | Portfolio | ${project?.name}`}
-        />
-        <meta property="og:description" content={project?.headline} />
-        <meta property="og:image" content={project?.logo?.url} />
-        <meta property="og:url" content={`/projects/${project?.slug}`} />
-        <meta
-          name="twitter:image:alt"
-          content={`${project?.name} Application Logo`}
-        />
-
-        <meta
-          property="og:site_name"
-          content="Kevin Cunanan | Software Engineer Portfolio"
-        />
-      </Helmet>
-      <Grid container className={classes.root} spacing={2}>
-        <Grid item xs={12} sm={3}>
-          <img
-            className={classes.logo}
-            src={project?.logo?.url}
-            alt={project?.name}
-            referrerPolicy="no-referrer"
-          />
-          <List>
-            <ListItem className={classes.item}>
-              <Link href="#overview">Project Overview</Link>
-            </ListItem>
-            <ListItem className={classes.item}>
-              <Link href="#introduction">Introduction</Link>
-            </ListItem>
-            <ListItem className={classes.item}>
-              <Link href="#requirements">Requirements</Link>
-            </ListItem>
-            <ListItem className={classes.item}>
-              <Link href="#architecture">Architecture</Link>
-            </ListItem>
-            <ListItem className={`${classes.item} ${classes.subItem}`}>
-              <Link href="#backend">Backend</Link>
-            </ListItem>
-            <ListItem className={`${classes.item} ${classes.subItem}`}>
-              <Link href="#frontend">Frontend</Link>
-            </ListItem>
-            <ListItem className={`${classes.item} ${classes.subItem}`}>
-              <Link href="#aws">AWS Architecture</Link>
-            </ListItem>
-            <ListItem className={`${classes.item} ${classes.subItem}`}>
-              <Link href="#ci+cd">
-                Continuous Integration / Continuous Delivery
-              </Link>
-            </ListItem>
-            <ListItem className={classes.item}>
-              <Link href="#ui">UI</Link>
-            </ListItem>
-          </List>
-        </Grid>
-        <Grid className={classes.content} item xs={12} sm={9}>
-          <div id="overview" />
-          <SectionHeading text="Project Overview" size="36px" />
-          <Markdown source={project?.tldr} escapeHtml={false} />
-
-          <div id="tools" />
-          <Typography className={classes.tools}>Tools Used</Typography>
-          <Markdown source={project?.tools} escapeHtml={false} />
-
-          <div id="introduction" />
-          <SectionHeading text="Introduction" size="36px" />
-          <Markdown source={project?.introduction} escapeHtml={false} />
-
-          <div id="requirements" />
-          <SectionHeading text="Requirements" size="36px" />
-          <Markdown source={project?.requirements} escapeHtml={false} />
-
-          <div id="architecture" />
-          <SectionHeading text="Architecture" size="36px" />
-          <Markdown source={project?.architecture} escapeHtml={false} />
-
-          <div id="ui" />
-          <SectionHeading text="UI" size="36px" />
-          <Markdown source={project?.wireframes_ui} escapeHtml={false} />
-        </Grid>
-      </Grid>
-    </>
-  );
-};
+  return null;
+}
 
 export default ProjectView;

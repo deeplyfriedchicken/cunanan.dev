@@ -1,21 +1,21 @@
 import { ReactNode, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
-import { Backdrop, Container, Theme } from '@material-ui/core';
+import { makeStyles } from '@mui/styles';
+import { Backdrop, Container, Theme } from '@mui/material';
 import Lottie from 'lottie-web-react';
 
 import HeaderNode from './Navigation/HeaderNode/HeaderNode';
-import Footer, { TFooterProps } from './Footer/Footer';
+import Footer, { TFooter } from './Footer/Footer';
 import { IPage, IProject } from '../../interfaces';
 
-export type TLayoutProps = {
+export type TLayout = {
   children: ReactNode;
   loading: boolean;
   footer?: IPage;
   projects: IProject[];
 };
 
-const useStyles = makeStyles<Theme, Pick<TLayoutProps, 'loading'>>((theme) => ({
+const useStyles = makeStyles<Theme, Pick<TLayout, 'loading'>>((theme) => ({
   root: {
     height: '100%',
     backgroundColor: theme.palette.primary.light,
@@ -42,9 +42,7 @@ const defaultOptions = {
   },
 };
 
-const Layout = ({
-  children, loading, footer, projects,
-}: TLayoutProps) => {
+function Layout({ children, loading, footer, projects }: TLayout) {
   const classes = useStyles({ loading });
   const location = useLocation();
 
@@ -76,10 +74,10 @@ const Layout = ({
       <div className={classes.container}>
         <HeaderNode projects={projects} />
         <Container fixed>{children as any}</Container>
-        <Footer {...({ ...footer?.data } as TFooterProps)} />
+        <Footer {...({ ...footer?.data } as TFooter)} />
       </div>
     </div>
   );
-};
+}
 
 export default Layout;

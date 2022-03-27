@@ -1,11 +1,9 @@
 import { useEffect } from 'react';
-import {
-  useLocation, Switch, Route, Redirect,
-} from 'react-router-dom';
+import { useLocation, Switch, Route, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Helmet } from 'react-helmet';
 
-import { AppStoreState } from '../store';
+import { AppStoreState, AppDispatch } from '../store';
 import { getSite, startLoading, stopLoading } from '../store/actions';
 import HomeView from '../components/HomeView';
 import ProjectView from '../components/ProjectView';
@@ -13,8 +11,8 @@ import Layout from '../components/Layout/Layout';
 
 import { IProject } from '../interfaces';
 
-const Container = () => {
-  const dispatch = useDispatch();
+function Container() {
+  const dispatch = useDispatch<AppDispatch>();
   const { REACT_APP_FLOAT_KEY: apiKey = '' } = process.env;
   const site = useSelector((state: AppStoreState) => state.site);
   const location = useLocation();
@@ -22,9 +20,11 @@ const Container = () => {
   useEffect(() => {
     startLoading()(dispatch);
     if (!site) {
-      getSite(apiKey)(dispatch).then(() => {
-        stopLoading()(dispatch);
-      });
+      getSite(apiKey)(dispatch)
+        .then(() => {
+          stopLoading()(dispatch);
+        })
+        .catch((e) => console.log(e));
     } else {
       setTimeout(() => {
         stopLoading()(dispatch);
@@ -68,6 +68,6 @@ const Container = () => {
       </Layout>
     </>
   );
-};
+}
 
 export default Container;

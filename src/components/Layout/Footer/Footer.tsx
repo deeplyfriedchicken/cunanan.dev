@@ -1,6 +1,4 @@
-import React from 'react';
-
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles } from '@mui/styles';
 
 import {
   Container,
@@ -10,15 +8,16 @@ import {
   ListItemIcon,
   ListItemText,
   Typography,
-} from '@material-ui/core';
+  Theme,
+} from '@mui/material';
 
-import InstagramIcon from '@material-ui/icons/Instagram';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import MailOutlineIcon from '@material-ui/icons/MailOutline';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
 
 import SectionHeading from '../../Common/SectionHeading/SectionHeading';
 
-export type TFooterProps = {
+export type TFooter = {
   heading?: string;
   paragraph?: string;
   email?: string;
@@ -26,7 +25,7 @@ export type TFooterProps = {
   instagram?: string;
 };
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     paddingTop: '3rem',
     paddingBottom: '3rem',
@@ -80,13 +79,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Footer = ({
+function Footer({
   heading = '',
   paragraph = '',
   email = '',
   github = '',
   instagram = '',
-}: TFooterProps) => {
+}: TFooter) {
   const classes = useStyles();
 
   return (
@@ -113,7 +112,7 @@ const Footer = ({
                   <ListItemText
                     className={classes.link}
                     disableTypography
-                    primary={(
+                    primary={
                       <a
                         target="_blank"
                         rel="noreferrer"
@@ -121,7 +120,7 @@ const Footer = ({
                       >
                         {github}
                       </a>
-                    )}
+                    }
                   />
                 </ListItem>
               )}
@@ -133,7 +132,7 @@ const Footer = ({
                   <ListItemText
                     className={classes.link}
                     disableTypography
-                    primary={(
+                    primary={
                       <a
                         target="_blank"
                         rel="noreferrer"
@@ -141,7 +140,7 @@ const Footer = ({
                       >
                         {instagram}
                       </a>
-                    )}
+                    }
                   />
                 </ListItem>
               )}
@@ -172,6 +171,6 @@ const Footer = ({
       </Container>
     </div>
   );
-};
+}
 
 export default Footer;
