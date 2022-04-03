@@ -70,8 +70,8 @@
 }
 
 .lottieContainer div {
-  height: 300px;
-  width: 300px;
+  height: 150px;
+  width: 150px;
 }
 
 .cta {
@@ -81,7 +81,7 @@
 .cta .button {
   border-radius: 50px;
   font-weight: 700;
-  padding: 20px 60px;
+  padding: 20px 30px;
 }
 
 .cat,
@@ -149,9 +149,9 @@
 .swatches span {
   background-color: #272b3e;
   border-radius: 50%;
-  height: 42px;
-  width: 42px;
-  margin-right: 25px;
+  height: 25px;
+  width: 25px;
+  margin-right: 15px;
 }
 
 .swatches span.pale_chestnut {
@@ -191,7 +191,7 @@
   }
 }
 
-@media screen and (min-width: 866px) {
+@media screen and (min-width: 768px) {
   .grid {
     grid-template-areas:
       'header ball nav'
@@ -297,7 +297,10 @@
   }
 
   .swatches span {
+    height: 42px;
+    width: 42px;
     margin-top: 25px;
+    margin-right: 25px;
   }
 
   .location {
@@ -320,6 +323,12 @@
 
   .cta {
     grid-area: cta;
+  }
+
+  .cta .button {
+    border-radius: 50px;
+    font-weight: 700;
+    padding: 20px 60px;
   }
 
   .location,
