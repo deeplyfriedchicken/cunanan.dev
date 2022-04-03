@@ -54,6 +54,7 @@ function Navigation({ resume }: TNavigation) {
         <Hidden xsDown>
           <ul className={classes.linksContainer}>
             <MenuItem text="Home" link="/" exact />
+            <MenuItem text="About" link="/about" exact />
             <MenuItem text="Projects" link="/projects/float" />
             <MenuItem text="Contact" useLink linkProps={{ href: '#contact' }} />
             {pathname === '/' ? (

@@ -27,20 +27,27 @@ const theme = createTheme({
     },
     primary: {
       light: '#ffffff',
-      main: '#fff',
-      dark: '#b2b2b2',
-      contrastText: '#32384C',
+      main: '#32384C',
+      dark: '#32384C',
+      contrastText: '#fff',
     },
     secondary: {
       light: '#5b5f6f',
-      main: '#32384C',
+      main: '#535766',
       dark: '#232735',
       contrastText: '#fff',
     },
   },
   typography: {
+    button: {
+      textTransform: 'none',
+    },
     fontFamily:
       '"Merriweather", "Merriweather Sans", "Helvetica", "Arial", sans-serif',
+    overline: {
+      fontFamily: '"Merriweather Sans", "Helvetica", "Arial", sans-serif',
+      letterSpacing: '0.3em',
+    },
   },
 });
 

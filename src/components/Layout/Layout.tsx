@@ -71,11 +71,7 @@ function Layout({ children, loading, footer, projects }: TLayout) {
           />
         </div>
       </Backdrop>
-      <div className={classes.container}>
-        <HeaderNode projects={projects} />
-        <Container fixed>{children as any}</Container>
-        <Footer {...({ ...footer?.data } as TFooter)} />
-      </div>
+      <div className={classes.container}>{children}</div>
     </div>
   );
 }
