@@ -3,15 +3,20 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "4.11.3",
-    "@material-ui/icons": "4.11.2",
-    "@material-ui/lab": "4.0.0-alpha.57",
+    "@emotion/react": "11.8.2",
+    "@emotion/styled": "11.8.1",
+    "@mui/icons-material": "5.5.1",
+    "@mui/lab": "5.0.0-alpha.74",
+    "@mui/material": "5.5.2",
+    "@mui/styles": "5.5.1",
+    "@mui/system": "5.5.2",
     "@reduxjs/toolkit": "1.5.0",
     "axios": "0.21.1",
+    "clsx": "1.1.1",
     "history": "5.0.0",
     "lottie-web-react": "1.0.3",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
     "react-ga": "3.3.0",
     "react-helmet": "6.1.0",
     "react-markdown": "5.0.3",
@@ -34,19 +39,28 @@
   },
   "eslintConfig": {
     "extends": [
-      "airbnb-typescript"
+      "airbnb",
+      "airbnb-typescript",
+      "airbnb/hooks",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:@typescript-eslint/recommended-requiring-type-checking",
+      "prettier"
     ],
     "rules": {
       "react/react-in-jsx-scope": [
         "off"
       ],
+      "react/require-default-props": "off",
       "react/jsx-props-no-spreading": [
         "off"
       ],
       "@typescript-eslint/no-unused-vars": [
         "warn"
-      ]
+      ],
+      "@typescript-eslint/no-unsafe-assignment": "off",
+      "@typescript-eslint/no-unsafe-member-access": "off"
     },
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
       "project": "./tsconfig.json"
     }
@@ -70,22 +84,25 @@
     "@testing-library/user-event": "12.1.10",
     "@types/jest": "26.0.15",
     "@types/node": "12.0.0",
-    "@types/react": "17.0.2",
-    "@types/react-dom": "17.0.1",
+    "@types/react": "17.0.43",
+    "@types/react-dom": "17.0.14",
     "@types/react-helmet": "6.1.0",
     "@types/react-redux": "7.1.16",
     "@types/react-router-dom": "5.1.7",
     "@types/redux-logger": "3.0.8",
-    "@typescript-eslint/eslint-plugin": "4.4.1",
-    "@typescript-eslint/parser": "4.15.1",
-    "eslint-config-airbnb-typescript": "12.3.1",
-    "eslint-config-react-app": "6.0.0",
-    "eslint-plugin-import": "2.22.0",
-    "eslint-plugin-jsx-a11y": "6.3.1",
-    "eslint-plugin-react": "7.20.3",
-    "eslint-plugin-react-hooks": "4.0.8",
+    "@typescript-eslint/eslint-plugin": "5.16.0",
+    "@typescript-eslint/parser": "5.16.0",
+    "eslint-config-airbnb": "19.0.4",
+    "eslint-config-airbnb-typescript": "16.1.4",
+    "eslint-config-prettier": "8.5.0",
+    "eslint-config-react-app": "7.0.0",
+    "eslint-plugin-import": "2.25.4",
+    "eslint-plugin-jsx-a11y": "6.5.1",
+    "eslint-plugin-react": "7.29.4",
+    "eslint-plugin-react-hooks": "4.3.0",
     "gh-pages": "3.1.0",
-    "react-scripts": "4.0.2",
-    "typescript": "4.1.2"
+    "prettier": "2.6.1",
+    "react-scripts": "5.0.0",
+    "typescript": "4.6.3"
   }
 }

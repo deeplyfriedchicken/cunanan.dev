@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 
-import { makeStyles } from '@material-ui/core/styles';
-import { Grid, Typography } from '@material-ui/core';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { makeStyles } from '@mui/styles';
+import { Theme } from '@mui/material/styles';
+import { Grid, Typography } from '@mui/material';
+import useMediaQuery from '@mui/material/useMediaQuery';
 import Lottie from 'lottie-web-react';
+import clsx from 'clsx';
 
 import { ISite, ILottieOptions, IProject } from '../../interfaces';
 
@@ -11,11 +13,27 @@ import SectionHeading from '../Common/SectionHeading/SectionHeading';
 // import OutlinedButton from '_/components/Common/OutlinedButton/OutlinedButton';
 import ProjectRow from '../Common/ProjectRow/ProjectRow';
 
-export type THomeViewProps = {
+export type THomeView = {
   site: ISite | null;
 };
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
+  '@keyframes pull': {
+    '10%': { transform: 'scaleY(1.5) translateY(0)' },
+    '20%': { transform: 'translateY(-100%)' },
+    '40%': { transform: 'translateY(0%)' },
+    '60%': { transform: 'translateY(-50%)' },
+    '80%': { transform: 'translateY(0%)' },
+    '100%': { transform: 'translateY(0)' },
+  },
+  '@keyframes pullBall': {
+    '10%': { transform: 'translateY(50%)' },
+    '20%': { transform: 'translateY(-100%)' },
+    '40%': { transform: 'translateY(0%)' },
+    '60%': { transform: 'translateY(-50%)' },
+    '80%': { transform: 'translateY(0%)' },
+    '100%': { transform: 'translateY(0)' },
+  },
   grid: {
     marginBottom: '4rem',
     [theme.breakpoints.down('sm')]: {
@@ -68,6 +86,17 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'column',
   },
+  clicked: {
+    '& > div.string': {
+      animation: `$pull 300ms ${theme.transitions.easing.easeInOut}`,
+      animationDuration: '2s',
+    },
+    '&$yarnWrapper > div.ball': {
+      cursor: 'default',
+      animation: `$pullBall 300ms ${theme.transitions.easing.easeInOut}`,
+      animationDuration: '2s',
+    },
+  },
   yarnWrapper: {
     flexGrow: 1,
     '& > div.string': {
@@ -83,7 +112,8 @@ const useStyles = makeStyles((theme) => ({
         margin: '-9rem auto 0 auto',
       },
     },
-    '& > div.blue-ball': {
+    '& > div.ball': {
+      cursor: 'pointer',
       backgroundColor: '#272b3e',
       borderRadius: '50%',
       height: '50px',
@@ -94,28 +124,33 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const HomeView = ({ site }: THomeViewProps) => {
+function HomeView({ site }: THomeView) {
   // useDispatch to get home page
   const matches = useMediaQuery('(max-width:959px)');
   const classes = useStyles();
-  const projects = (site?.flocks.find((flock) => flock.slug === 'portfolio')
-    ?.data as IProject[]) || [];
+  const projects =
+    (site?.flocks.find((flock) => flock.slug === 'portfolio')
+      ?.data as IProject[]) || [];
   const homePage = site?.pages.find((page) => page.slug === 'home');
   const [options, setOptions] = useState<ILottieOptions | null>(null);
-
+  const [clickedBall, setClickedBall] = useState(false);
+  React.useEffect(() => {
+    if (clickedBall) {
+      setTimeout(() => setClickedBall(false), 2000);
+    }
+  }, [clickedBall]);
+  const { about, landing, location, data } = homePage?.data || {};
   React.useEffect(() => {
     setOptions({
       loop: true,
       autoplay: true,
-      path: homePage?.data.lottie,
+      path: homePage?.data?.lottie,
       rendererSettings: {
         preserveAspectRatio: 'xMidYMid slice',
       },
     });
   }, [homePage]);
-
   // add Layout here
-  const { about, landing, location } = homePage?.data || {};
   return (
     <>
       {/* Intro */}
@@ -135,9 +170,24 @@ const HomeView = ({ site }: THomeViewProps) => {
           </div> */}
         </Grid>
         <Grid className={classes.lottieContainer} item md={3} xs={12}>
-          <div className={classes.yarnWrapper}>
+          <div
+            className={clsx(classes.yarnWrapper, {
+              [classes.clicked]: clickedBall,
+            })}
+          >
             <div className="string" />
-            <div className="blue-ball" />
+            {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events */}
+            <div
+              role="link"
+              tabIndex={0}
+              aria-label="Save"
+              onClick={() => {
+                if (!clickedBall) {
+                  setClickedBall(!clickedBall);
+                }
+              }}
+              className="ball"
+            />
           </div>
           <Lottie
             options={options}
@@ -183,7 +233,7 @@ const HomeView = ({ site }: THomeViewProps) => {
         </Grid>
       </Grid>
       {/* Location */}
-      <Grid container className={classes.grid} justify="center">
+      <Grid container className={classes.grid} justifyContent="center">
         <Grid container item sm={5} xs={12} alignItems="center">
           <div className={classes.centerMobile}>
             <Typography
@@ -210,6 +260,6 @@ const HomeView = ({ site }: THomeViewProps) => {
       </Grid>
     </>
   );
-};
+}
 
 export default HomeView;

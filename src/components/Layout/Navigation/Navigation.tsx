@@ -1,20 +1,16 @@
-import React from 'react';
-
-import { makeStyles } from '@material-ui/core/styles';
-import {
-  AppBar, Hidden, IconButton, Toolbar,
-} from '@material-ui/core';
+import { makeStyles } from '@mui/styles';
+import { AppBar, Hidden, IconButton, Toolbar, Theme } from '@mui/material';
 import { useLocation } from 'react-router-dom';
 
-import MenuIcon from '@material-ui/icons/Menu';
+import MenuIcon from '@mui/material/Menu';
 import MenuItem from './MenuItem/MenuItem';
 import { TFile } from '../../../interfaces';
 
-export type TNavigationProps = {
+export type TNavigation = {
   resume?: TFile;
 };
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     boxShadow: theme.shadows[0],
     color: 'inherit',
@@ -43,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Navigation = ({ resume }: TNavigationProps) => {
+function Navigation({ resume }: TNavigation) {
   const classes = useStyles();
   const { pathname } = useLocation();
 
@@ -52,12 +48,13 @@ const Navigation = ({ resume }: TNavigationProps) => {
       <Toolbar className={classes.toolbar}>
         <Hidden smUp>
           <IconButton edge="start" color="inherit" aria-label="menu">
-            <MenuIcon />
+            <MenuIcon open />
           </IconButton>
         </Hidden>
         <Hidden xsDown>
           <ul className={classes.linksContainer}>
             <MenuItem text="Home" link="/" exact />
+            <MenuItem text="About" link="/about" exact />
             <MenuItem text="Projects" link="/projects/float" />
             <MenuItem text="Contact" useLink linkProps={{ href: '#contact' }} />
             {pathname === '/' ? (
@@ -85,6 +82,6 @@ const Navigation = ({ resume }: TNavigationProps) => {
       </Toolbar>
     </AppBar>
   );
-};
+}
 
 export default Navigation;

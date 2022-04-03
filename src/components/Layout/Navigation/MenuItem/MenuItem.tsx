@@ -1,10 +1,7 @@
-import React from 'react';
-
-import { makeStyles } from '@material-ui/core/styles';
 import { NavLink } from 'react-router-dom';
-import { Link, Theme } from '@material-ui/core';
+import { Link } from '@mui/material';
 
-export type TMenuItemProps = {
+export type TMenuItem = {
   text: string;
   link?: string;
   exact?: boolean;
@@ -12,47 +9,15 @@ export type TMenuItemProps = {
   linkProps?: any;
 };
 
-const useStyles = makeStyles<Theme, Pick<TMenuItemProps, 'text'>>({
-  root: ({ text }) => ({
-    width: '150px',
-    textTransform: 'uppercase',
-    fontSize: '18px',
-    textAlign: 'center',
-    '& > a': {
-      '&:first-child': {
-        marginLeft: 0,
-      },
-      margin: '0 25px',
-      textDecoration: 'none',
-      color: 'inherit',
-      '&.active': {
-        color: 'inherit',
-        fontWeight: 800,
-        content: `"${text}"`,
-      },
-    },
-    '&:hover a': {
-      opacity: 0,
-    },
-    '&:hover::before': {
-      position: 'absolute',
-      fontWeight: 800,
-      content: `"${text}"`,
-    },
-  }),
-});
-
-const MenuItem = ({
+function MenuItem({
   link,
   text,
   exact = false,
   useLink = false,
   linkProps,
-}: TMenuItemProps) => {
-  const classes = useStyles({ text });
-
+}: TMenuItem) {
   return (
-    <li className={classes.root}>
+    <li>
       {useLink ? (
         <Link {...linkProps}>{text}</Link>
       ) : (
@@ -62,6 +27,6 @@ const MenuItem = ({
       )}
     </li>
   );
-};
+}
 
 export default MenuItem;

@@ -15,8 +15,8 @@ export interface IProject {
   logo?: TFile;
   header_color: string;
 
-  introduction?: string;
-  requirements?: string;
-  architecture?: string;
-  wireframes_ui?: string;
+  introduction: string;
+  requirements: string;
+  architecture: string;
+  wireframes_ui: string;
 }

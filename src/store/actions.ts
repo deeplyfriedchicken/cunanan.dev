@@ -44,7 +44,7 @@ export function getSite(apiKey: string) {
       return data;
     } catch (error) {
       dispatch(getSiteFailure(error));
-      return error;
+      throw error;
     }
   };
 }

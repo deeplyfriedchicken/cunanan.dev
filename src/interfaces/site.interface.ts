@@ -1,4 +1,5 @@
-import { IFlock, IPage } from '.';
+import { IFlock } from './flock.interface';
+import { IPage } from './page.interface';
 
 export interface ISite {
   id: string;

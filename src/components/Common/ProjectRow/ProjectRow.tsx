@@ -1,12 +1,11 @@
-import React from 'react';
 import { Link as RouteLink } from 'react-router-dom';
-import { Grid, Link, Typography } from '@material-ui/core';
-import { makeStyles } from '@material-ui/core/styles';
+import { Grid, Link, Typography, Theme } from '@mui/material';
+import { makeStyles } from '@mui/styles';
 
 import { IProject } from '../../../interfaces';
 import Markdown from '../../Markdown/Markdown';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme: Theme) => ({
   root: {
     marginBottom: '2rem',
     position: 'relative',
@@ -52,33 +51,33 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const ProjectRow = (project: IProject) => {
+function ProjectRow({ logo, name, headline, tldr, tags, slug }: IProject) {
   const classes = useStyles();
 
   return (
     <Grid className={classes.root} container spacing={8}>
       <Grid className={classes.logoContainer} item xs={12} sm={2}>
-        <img src={project?.logo?.url} alt={project?.name} />
+        <img src={logo?.url} alt={name} />
       </Grid>
       <Grid item xs={12} md={10}>
         <Typography className={classes.name} variant="h4">
-          {project.name}
+          {name}
         </Typography>
         <Typography className={classes.description} variant="body1">
-          {project.headline}
+          {headline}
         </Typography>
         <Typography
           className={classes.description}
           variant="body1"
           component="div"
         >
-          <Markdown source={`tldr; ${project.tldr}`} />
+          <Markdown source={`tldr; ${tldr}`} />
         </Typography>
-        <Typography className={classes.tags}>{project.tags}</Typography>
+        <Typography className={classes.tags}>{tags}</Typography>
         <Link
           component={RouteLink}
           className={classes.link}
-          to={`/projects/${project.slug}`}
+          to={`/projects/${slug}`}
           color="secondary"
         >
           Read More +
@@ -86,6 +85,6 @@ const ProjectRow = (project: IProject) => {
       </Grid>
     </Grid>
   );
-};
+}
 
 export default ProjectRow;
