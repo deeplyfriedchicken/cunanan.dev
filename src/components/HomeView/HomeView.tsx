@@ -139,7 +139,7 @@ function HomeView({ site }: THomeView) {
       setTimeout(() => setClickedBall(false), 2000);
     }
   }, [clickedBall]);
-  const { about, landing, location, data } = homePage?.data || {};
+  const { about, landing, location } = homePage?.data || {};
   React.useEffect(() => {
     setOptions({
       loop: true,

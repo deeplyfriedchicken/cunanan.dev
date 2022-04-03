@@ -1,11 +1,9 @@
 import { ReactNode, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
-import { Backdrop, Container, Theme } from '@mui/material';
+import { Backdrop, Theme } from '@mui/material';
 import Lottie from 'lottie-web-react';
 
-import HeaderNode from './Navigation/HeaderNode/HeaderNode';
-import Footer, { TFooter } from './Footer/Footer';
 import { IPage, IProject } from '../../interfaces';
 
 export type TLayout = {
