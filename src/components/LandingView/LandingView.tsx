@@ -30,17 +30,27 @@ function LandingView({ site }: TLandingView) {
 
   return (
     <div className={classes.root}>
-      <BlobSvg className={classes.blob} />
-      <SmallBlobSvg className={classes.blob_right} />
       <Container className={classes.container}>
         <div className={classes.grid}>
           <div className={classes.header}>
             <Typography variant="h1" sx={{ color: 'secondary.main' }}>
               kevin cunanan
             </Typography>
-            <Typography variant="h6" sx={{ color: 'secondary.main' }}>
+            <Typography
+              className={classes.job_description}
+              variant="h6"
+              sx={{ color: 'secondary.main' }}
+            >
               frontend engineer
             </Typography>
+          </div>
+          <div className={classes.list}>
+            <ul>
+              <li>frontend engineer</li>
+              <li>verified cat enthusiast</li>
+              <li>maker of cool things</li>
+              <li>react subject matter expert</li>
+            </ul>
           </div>
           <div id="ball" className={classes.ball}>
             <Typography
@@ -113,6 +123,8 @@ function LandingView({ site }: TLandingView) {
             </Button>
           </div>
         </div>
+        <BlobSvg className={classes.blob} />
+        <SmallBlobSvg className={classes.blob_right} />
       </Container>
     </div>
   );

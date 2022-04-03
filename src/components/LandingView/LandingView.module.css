@@ -1,61 +1,20 @@
 .root {
   --grid-top-padding: 60px;
   position: relative;
-  overflow: hidden;
-}
-
-.container {
-  position: relative;
-  height: 100vh;
-}
-
-.grid {
-  position: relative;
-  display: grid;
-  grid-template-areas:
-    'header ball nav'
-    'cat lottie swatches'
-    'location cta swatches';
-  grid-template-columns: 1fr 275px 1fr;
-  grid-template-rows: auto;
-  padding: 0 40px 85px;
-  z-index: 10;
-  min-height: 800px;
 }
 
 .blob {
   right: calc(50% - 275px);
   fill: #f8f9f9;
-  position: absolute;
+  position: fixed;
   top: 0;
   z-index: 1;
   animation: move 1000s ease-in-out infinite;
   transform-origin: 50% 50%;
 }
 
-@keyframes move {
-  0% {
-    transform: scale(1) translate(10px, -30px);
-  }
-  38% {
-    transform: scale(0.8, 1) translate(80vw, 30vh) rotate(160deg);
-  }
-  40% {
-    transform: scale(0.8, 1) translate(80vw, 30vh) rotate(160deg);
-  }
-  78% {
-    transform: scale(1.3) translate(0vw, 50vh) rotate(-20deg);
-  }
-  80% {
-    transform: scale(1.3) translate(0vw, 50vh) rotate(-20deg);
-  }
-  100% {
-    transform: scale(1) translate(10px, -30px);
-  }
-}
-
 .blob_right {
-  position: absolute;
+  position: fixed;
   top: -585px;
   right: calc(50% - 1250px);
   fill: #f8f9f9;
@@ -63,56 +22,26 @@
   transform: rotate(-15deg);
 }
 
-.curve {
-  position: absolute;
-  height: 125%;
-  width: 100%;
-  top: 0;
-  z-index: 1;
+.grid {
+  position: relative;
+  display: grid;
+  grid-template-areas:
+    'header   ball'
+    'list     ball'
+    'cta      ball'
+    'swatches lottie';
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  z-index: 10;
+  height: 100vh;
 }
 
-.curve > span {
-  z-index: 1;
-  content: '';
-  display: block;
-  position: absolute;
-}
-
-.curve span:nth-child(1) {
-  left: 481px;
-  width: 1000px;
-  height: 1000px;
-  background-color: white;
-}
-
-.curve span:nth-child(2) {
-  top: 308px;
-  left: -231px;
-  border-radius: 100% 75%;
-  width: 1000px;
-  height: 700px;
-  background-color: #f8f9f9;
-  transform: rotate(15deg);
-}
-
-.curve span:nth-child(3) {
-  top: -204px;
-  left: 357px;
-  border-radius: 100%;
-  width: 300px;
-  height: 800px;
-  background-color: white;
-  transform: rotate(-50deg);
-}
-
-.curve span:nth-child(4) {
-  top: 0;
-  left: 357px;
-  border-radius: 100%;
-  width: 300px;
-  height: 800px;
-  background-color: white;
-  transform: rotate(-50deg);
+.container {
+  position: relative;
+  height: 100vh;
+  min-height: 800px;
+  overflow-y: hidden;
+  padding: 0 30px;
 }
 
 .header {
@@ -121,16 +50,60 @@
 }
 
 .header h1 {
-  font-weight: 300;
-  font-size: 96px;
-  line-height: 121px;
-  margin: 0;
+  font-size: 48px;
+  line-height: 1.15;
 }
 
-.header h6 {
+.list {
+  grid-area: list;
   font-weight: 300;
-  font-size: 18px;
-  margin: 0;
+  font-size: 14px;
+}
+
+.list ul {
+  padding-left: 20px;
+}
+
+.list li {
+  padding-bottom: 10px;
+  line-height: 2;
+}
+
+.lottieContainer div {
+  height: 300px;
+  width: 300px;
+}
+
+.cta {
+  grid-area: cta;
+}
+
+.cta .button {
+  border-radius: 50px;
+  font-weight: 700;
+  padding: 20px 60px;
+}
+
+.cat,
+.nav,
+.location {
+  display: none;
+}
+
+.stringText,
+.ballText {
+  display: none;
+}
+
+.lottieContainer {
+  grid-area: lottie;
+}
+
+.swatches {
+  flex-direction: row;
+  grid-area: swatches;
+  display: flex;
+  align-items: center;
 }
 
 .ball {
@@ -164,75 +137,13 @@
 
 .ballText {
   position: absolute;
-  bottom: 16.5%;
+  top: 325px;
   right: -75%;
   width: 275px;
 }
 
-.nav {
-  grid-area: nav;
-  padding-top: var(--grid-top-padding);
-}
-
-.menu {
-  list-style: none;
-  display: flex;
-  justify-content: space-between;
-}
-
-.menu a {
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 197.4%;
-  color: #32384c;
-  opacity: 0.5;
-  padding-bottom: 6px;
-}
-
-.menu a:global(.active) {
-  opacity: 1;
-  border-bottom: 2px solid #32384c;
-}
-
-.menu a:hover:not(:global(.active)) {
-  opacity: 0.75;
-  border-bottom: 2px solid #32384c;
-}
-
-.cat {
-  grid-area: cat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  position: relative;
-}
-
-.arrow {
-  position: absolute;
-  right: 0;
-}
-
-.catDescription {
-  margin-bottom: 50px;
-}
-
-.lottieContainer {
-  grid-area: lottie;
-}
-
-.lottieContainer div {
-  height: 275px;
-  width: 275px;
-}
-
-.swatches {
-  grid-area: swatches;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  margin-left: auto;
+.job_description {
+  display: none;
 }
 
 .swatches span {
@@ -240,7 +151,7 @@
   border-radius: 50%;
   height: 42px;
   width: 42px;
-  margin-top: 25px;
+  margin-right: 25px;
 }
 
 .swatches span.pale_chestnut {
@@ -259,36 +170,173 @@
   background-color: #32384c;
 }
 
-.location {
-  grid-area: location;
+@keyframes move {
+  0% {
+    transform: scale(1) translate(10px, -30px);
+  }
+  38% {
+    transform: scale(0.8, 1) translate(80vw, 30vh) rotate(160deg);
+  }
+  40% {
+    transform: scale(0.8, 1) translate(80vw, 30vh) rotate(160deg);
+  }
+  78% {
+    transform: scale(1.3) translate(0vw, 50vh) rotate(-20deg);
+  }
+  80% {
+    transform: scale(1.3) translate(0vw, 50vh) rotate(-20deg);
+  }
+  100% {
+    transform: scale(1) translate(10px, -30px);
+  }
 }
 
-.locationCurrentlyBased {
-  font-weight: 300;
-  font-size: 22px;
-  line-height: 150%;
+@media screen and (min-width: 866px) {
+  .grid {
+    grid-template-areas:
+      'header ball nav'
+      'cat lottie swatches'
+      'location cta swatches';
+    grid-template-columns: 1fr 275px 1fr;
+    padding: 0 40px 85px;
+    min-height: 800px;
+    height: 100%;
+  }
+
+  .header h1 {
+    font-weight: 300;
+    font-size: 60px;
+    line-height: 1.26;
+    margin: 0;
+  }
+
+  .list {
+    display: none;
+  }
+
+  .job_description {
+    display: block;
+  }
+
+  .header h6 {
+    font-weight: 300;
+    font-size: 18px;
+    margin: 0;
+  }
+
+  .string {
+    height: 300px;
+  }
+
+  .nav {
+    grid-area: nav;
+    padding-top: var(--grid-top-padding);
+    display: block;
+  }
+
+  .menu {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    justify-content: flex-end;
+  }
+
+  .menu li {
+    margin: 0 10px 10px 0;
+    justify-content: flex-end;
+  }
+
+  .menu a {
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 197.4%;
+    color: #32384c;
+    opacity: 0.5;
+    padding-bottom: 6px;
+  }
+
+  .menu a:global(.active) {
+    opacity: 1;
+    border-bottom: 2px solid #32384c;
+  }
+
+  .menu a:hover:not(:global(.active)) {
+    opacity: 0.75;
+    border-bottom: 2px solid #32384c;
+  }
+
+  .cat {
+    grid-area: cat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .arrow {
+    position: absolute;
+    right: -75px;
+    top: 125px;
+  }
+
+  .catDescription {
+    margin-bottom: 5px;
+  }
+
+  .lottieContainer div {
+    height: 275px;
+    width: 275px;
+  }
+
+  .swatches {
+    flex-direction: column;
+    margin-left: auto;
+  }
+
+  .swatches span {
+    margin-top: 25px;
+  }
+
+  .location {
+    grid-area: location;
+    display: block;
+  }
+
+  .locationCurrentlyBased {
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 150%;
+  }
+
+  .locationValue {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 150%;
+  }
+
+  .cta {
+    grid-area: cta;
+  }
+
+  .location,
+  .cta,
+  .swatches {
+    margin-top: auto;
+  }
 }
 
-.locationValue {
-  font-style: normal;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 150%;
+@media screen and (min-width: 1200px) {
+  .header h1 {
+    font-size: 76px;
+  }
 }
 
-.cta {
-  grid-area: cta;
-  text-align: center;
-}
-
-.location,
-.cta,
-.swatches {
-  margin-top: auto;
-}
-
-.button {
-  border-radius: 50px;
-  font-weight: 700;
-  padding: 20px 60px;
+@media screen and (min-width: 1200px) {
+  .header h1 {
+    font-size: 96px;
+  }
 }
