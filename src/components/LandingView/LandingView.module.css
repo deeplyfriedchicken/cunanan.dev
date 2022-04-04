@@ -5,7 +5,6 @@
 
 .blob {
   right: calc(50% - 275px);
-  fill: #f8f9f9;
   position: fixed;
   top: 0;
   z-index: 1;
@@ -17,7 +16,6 @@
   position: fixed;
   top: -585px;
   right: calc(50% - 1250px);
-  fill: #f8f9f9;
   z-index: 1;
   transform: rotate(-15deg);
 }
@@ -146,27 +144,32 @@
   display: none;
 }
 
-.swatches span {
+.swatches .swatch {
   background-color: #272b3e;
   border-radius: 50%;
   height: 25px;
   width: 25px;
   margin-right: 15px;
+  cursor: pointer;
 }
 
-.swatches span.pale_chestnut {
+.swatches .white {
+  background-color: white;
+}
+
+.swatches .pale_chestnut {
   background-color: #e8b9ab;
 }
 
-.swatches span.laurel_green {
+.swatches .laurel_green {
   background-color: #adbca5;
 }
 
-.swatches span.wheat {
+.swatches .wheat {
   background-color: #f6d8ae;
 }
 
-.swatches span.charcoal {
+.swatches .charcoal {
   background-color: #32384c;
 }
 
@@ -252,19 +255,8 @@
     font-weight: 700;
     font-size: 18px;
     line-height: 197.4%;
-    color: #32384c;
     opacity: 0.5;
     padding-bottom: 6px;
-  }
-
-  .menu a:global(.active) {
-    opacity: 1;
-    border-bottom: 2px solid #32384c;
-  }
-
-  .menu a:hover:not(:global(.active)) {
-    opacity: 0.75;
-    border-bottom: 2px solid #32384c;
   }
 
   .cat {
@@ -296,7 +288,7 @@
     margin-left: auto;
   }
 
-  .swatches span {
+  .swatches .swatch {
     height: 42px;
     width: 42px;
     margin-top: 25px;

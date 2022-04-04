@@ -5,7 +5,6 @@ import { Helmet } from 'react-helmet';
 
 import { AppStoreState, AppDispatch } from '../store';
 import { getSite, startLoading, stopLoading } from '../store/actions';
-import HomeView from '../components/HomeView';
 import LandingView from '../components/LandingView';
 import ProjectView from '../components/ProjectView';
 import Layout from '../components/Layout/Layout';
@@ -58,12 +57,7 @@ function Container() {
       </Helmet>
       <Layout loading={loading} footer={footer} projects={projects}>
         <Switch>
-          <Route exact path="/" render={() => <HomeView site={site} />} />
-          <Route
-            exact
-            path="/landing"
-            render={() => <LandingView site={site} />}
-          />
+          <Route exact path="/" render={() => <LandingView site={site} />} />
           <Route
             exact
             path="/projects/:projectSlug"
