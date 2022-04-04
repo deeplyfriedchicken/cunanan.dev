@@ -1,0 +1,35 @@
+.swatch {
+  position: relative;
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+  margin-right: 15px;
+  cursor: pointer;
+}
+
+.swatch:global(.active)::before {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  height: 20px;
+  width: 20px;
+  top: 2.5px;
+  left: 2.5px;
+}
+
+
+@media screen and (min-width: 768px) {
+  .swatch {
+    height: 42px;
+    width: 42px;
+    margin-top: 25px;
+    margin-right: 25px;
+  }
+
+  .swatch:global(.active)::before {
+    height: 35px;
+    width: 35px;
+    top: 3.5px;
+    left: 3.5px;
+  }
+}

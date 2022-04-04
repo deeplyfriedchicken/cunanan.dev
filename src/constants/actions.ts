@@ -1,4 +1,4 @@
-const ACTIONS = [
+export const ACTIONS = [
   'GET_SITE',
   'GET_SITE_SUCCESS',
   'GET_SITE_FAILURE',
@@ -7,7 +7,7 @@ const ACTIONS = [
   'STOP_LOADING',
 ];
 
-const ACTION_TYPES = ACTIONS.reduce(
+export const ACTION_TYPES = ACTIONS.reduce(
   (actions: { [key: string]: string }, action) => {
     const updatedActions = actions;
     updatedActions[action] = action;
