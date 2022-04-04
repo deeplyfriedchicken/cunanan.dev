@@ -7,8 +7,9 @@ export const themes: Record<ETheme, ThemeOptions> = {
       background: {
         default: '#ffffff',
       },
-      blob: {
-        main: '#f9f9fb',
+      svgs: {
+        arrow: '#32384C',
+        blob: '#f9f9fb',
       },
       swatch: {
         main: '#FFFFFF',
@@ -33,8 +34,9 @@ export const themes: Record<ETheme, ThemeOptions> = {
       background: {
         default: '#ffffff',
       },
-      blob: {
-        main: '#fcf9f8',
+      svgs: {
+        arrow: '#e2ab9b',
+        blob: '#fcf9f8',
       },
       swatch: {
         main: '#E8B9AB',
@@ -59,8 +61,9 @@ export const themes: Record<ETheme, ThemeOptions> = {
       background: {
         default: '#ffffff',
       },
-      blob: {
-        main: '#f8f9f6',
+      svgs: {
+        arrow: '#ADBCA5',
+        blob: '#f8f9f6',
       },
       swatch: {
         main: '#ADBCA5',
@@ -84,8 +87,9 @@ export const themes: Record<ETheme, ThemeOptions> = {
       background: {
         default: '#ffffff',
       },
-      blob: {
-        main: '#fdfbf5',
+      svgs: {
+        arrow: '#F6D8AE',
+        blob: '#fdfbf5',
       },
       swatch: {
         main: '#F6D8AE',
@@ -109,8 +113,9 @@ export const themes: Record<ETheme, ThemeOptions> = {
       background: {
         default: '#262a3b',
       },
-      blob: {
-        main: '#2a2e3f',
+      svgs: {
+        arrow: '#FFFFFF',
+        blob: '#2a2e3f',
       },
       swatch: {
         main: '#32384C',
@@ -130,6 +135,14 @@ export const themes: Record<ETheme, ThemeOptions> = {
       },
     },
   },
+};
+
+export const catThemes: Record<ETheme, string> = {
+  white: 'https://assets8.lottiefiles.com/packages/lf20_OT15QW.json',
+  chestnut: 'https://assets3.lottiefiles.com/packages/lf20_1hcciifw.json',
+  green: 'https://assets4.lottiefiles.com/packages/lf20_d8mn4nlt.json',
+  wheat: 'https://assets9.lottiefiles.com/packages/lf20_g0h6bslu.json',
+  charcoal: 'https://assets2.lottiefiles.com/packages/lf20_mjkyokvo.json',
 };
 
 export default themes;

@@ -69,7 +69,7 @@
 
 .lottieContainer div {
   height: 150px;
-  width: 150px;
+  width: 165px;
 }
 
 .cta {
@@ -117,12 +117,6 @@
   border-radius: 0;
 }
 
-.stringText {
-  position: absolute;
-  transform: rotate(-90deg);
-  top: 145px;
-  width: 205px;
-}
 
 .circle {
   cursor: pointer;
@@ -131,13 +125,6 @@
   width: 85px;
   position: relative;
   margin: auto;
-}
-
-.ballText {
-  position: absolute;
-  top: 325px;
-  right: -75%;
-  width: 275px;
 }
 
 .job_description {
@@ -202,6 +189,22 @@
     height: 300px;
   }
 
+  .stringText {
+    display: block;
+    position: absolute;
+    transform: rotate(-90deg);
+    top: 145px;
+    width: 205px;
+  }
+
+  .ballText {
+    display: block;
+    position: absolute;
+    top: 325px;
+    right: -75%;
+    width: 275px;
+  }
+
   .nav {
     grid-area: nav;
     padding-top: var(--grid-top-padding);
@@ -251,7 +254,7 @@
 
   .lottieContainer div {
     height: 275px;
-    width: 275px;
+    width: 300px;
   }
 
   .swatches {

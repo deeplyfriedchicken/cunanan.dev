@@ -1,5 +1,4 @@
 /** @jsxImportSource @emotion/react */
-import Lottie from 'lottie-web-react';
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
@@ -10,6 +9,7 @@ import MenuItem from '../Layout/Navigation/MenuItem/MenuItem';
 import { ISite } from '../../interfaces';
 
 import Swatch from '../Common/Swatch';
+import Cat from '../Common/Cat';
 
 import { ReactComponent as BlobSvg } from './blob.svg';
 import { ReactComponent as SmallBlobSvg } from './small_blob.svg';
@@ -24,15 +24,6 @@ export type TLandingView = {
 
 function LandingView({ site }: TLandingView) {
   const theme = useTheme();
-  const homePage = site?.pages.find((page) => page.slug === 'home');
-  const options = {
-    loop: true,
-    autoplay: true,
-    path: homePage?.data?.lottie,
-    rendererSettings: {
-      preserveAspectRatio: 'xMidYMid slice',
-    },
-  };
 
   return (
     <div className={classes.root}>
@@ -58,7 +49,7 @@ function LandingView({ site }: TLandingView) {
             >
               <li>frontend engineer</li>
               <li>verified cat enthusiast</li>
-              <li>maker of cool things</li>
+              <li>pipeline tinkerer</li>
               <li>react subject matter expert</li>
             </ul>
           </div>
@@ -68,7 +59,7 @@ function LandingView({ site }: TLandingView) {
               sx={{ color: 'primary.main' }}
               className={classes.stringText}
             >
-              maker of cool things
+              pipeline tinkerer
             </Typography>
             <Typography
               variant="h6"
@@ -102,16 +93,20 @@ function LandingView({ site }: TLandingView) {
             >
               verified cat enthusiast
             </Typography>
-            <ArrowSvg className={classes.arrow} />
+            <ArrowSvg
+              css={css`
+                & path:first-of-type {
+                  fill: ${theme.palette.svgs.arrow};
+                }
+                & path:last-of-type {
+                  stroke: ${theme.palette.svgs.arrow};
+                }
+              `}
+              className={classes.arrow}
+            />
           </div>
           <div className={classes.lottieContainer}>
-            <Lottie
-              options={options}
-              height={150}
-              width={150}
-              isStopped={false}
-              isPaused={false}
-            />
+            <Cat />
           </div>
           <div className={classes.swatches}>
             <Swatch color="white" />
@@ -144,13 +139,13 @@ function LandingView({ site }: TLandingView) {
         </div>
         <BlobSvg
           css={css`
-            fill: ${theme.palette.blob.main};
+            fill: ${theme.palette.svgs.blob};
           `}
           className={classes.blob}
         />
         <SmallBlobSvg
           css={css`
-            fill: ${theme.palette.blob.main};
+            fill: ${theme.palette.svgs.blob};
           `}
           className={classes.blob_right}
         />
