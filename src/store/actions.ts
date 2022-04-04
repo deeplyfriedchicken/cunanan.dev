@@ -1,6 +1,6 @@
 import { createAction } from '@reduxjs/toolkit';
 import api from '../api';
-import ACTION_TYPES from '../constants/actions';
+import { ACTION_TYPES } from '../constants';
 
 import { ISite } from '../interfaces';
 import { AppDispatch } from '.';

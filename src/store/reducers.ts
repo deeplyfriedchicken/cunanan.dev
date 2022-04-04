@@ -1,5 +1,5 @@
 import { createReducer, PayloadAction } from '@reduxjs/toolkit';
-import ACTION_TYPES from '../constants/actions';
+import { ACTION_TYPES } from '../constants';
 import { ISite } from '../interfaces';
 
 const rootReducer = {
