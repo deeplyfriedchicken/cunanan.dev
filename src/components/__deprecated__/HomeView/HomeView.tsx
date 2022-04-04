@@ -7,11 +7,11 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import Lottie from 'lottie-web-react';
 import clsx from 'clsx';
 
-import { ISite, ILottieOptions, IProject } from '../../interfaces';
+import { ISite, ILottieOptions, IProject } from '../../../interfaces';
 
-import SectionHeading from '../Common/SectionHeading/SectionHeading';
+import SectionHeading from '../../Common/SectionHeading/SectionHeading';
 // import OutlinedButton from '_/components/Common/OutlinedButton/OutlinedButton';
-import ProjectRow from '../Common/ProjectRow/ProjectRow';
+import ProjectRow from '../../Common/ProjectRow/ProjectRow';
 
 export type THomeView = {
   site: ISite | null;
