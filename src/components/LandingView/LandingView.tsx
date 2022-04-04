@@ -53,7 +53,11 @@ function LandingView({ site }: TLandingView) {
                 </Typography>
               </div>
               <div className={classes.list}>
-                <ul>
+                <ul
+                  css={css`
+                    color: ${theme.palette.primary.main};
+                  `}
+                >
                   <li>frontend engineer</li>
                   <li>verified cat enthusiast</li>
                   <li>maker of cool things</li>
