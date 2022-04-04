@@ -2,11 +2,17 @@ import '@mui/material/styles';
 
 declare module '@mui/material/styles' {
   interface Palette {
-    blob: Palette['primary'];
+    svgs: {
+      arrow: string;
+      blob: string;
+    };
     swatch: Palette['primary'];
   }
   interface PaletteOptions {
-    blob: PaletteOptions['primary'];
+    svgs: {
+      arrow: string;
+      blob: string;
+    };
     swatch: PaletteOptions['primary'];
   }
 }
