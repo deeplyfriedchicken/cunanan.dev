@@ -16,7 +16,7 @@ export type TLayout = {
 const useStyles = makeStyles<Theme, Pick<TLayout, 'loading'>>((theme) => ({
   root: {
     height: '100%',
-    backgroundColor: theme.palette.primary.light,
+    backgroundColor: theme.palette.background.default,
   },
   backdrop: {
     zIndex: theme.zIndex.drawer + 1,
