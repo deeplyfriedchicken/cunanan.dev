@@ -2,7 +2,7 @@
 import Button from '@mui/material/Button';
 import Paper from '@mui/material/Paper';
 import Typography from '@mui/material/Typography';
-import { Container } from '@mui/material';
+import { Alert, Container } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { css } from '@emotion/react';
 import MenuItem from '../Layout/Navigation/MenuItem/MenuItem';
@@ -27,6 +27,7 @@ function LandingView({ site }: TLandingView) {
 
   return (
     <div className={classes.root}>
+      <Alert css={css`position: relative; z-index: 20;`} severity="warning">Sorry! This site is still under construction; some buttons, pages, and links may not be fully operational for a bit.</Alert>
       <Container className={classes.container}>
         <div className={classes.grid}>
           <div className={classes.header}>

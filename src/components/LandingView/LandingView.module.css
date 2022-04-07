@@ -1,6 +1,9 @@
 .root {
   --grid-top-padding: 60px;
   position: relative;
+  height: 100vh;
+  min-height: 800px;
+  overflow-y: hidden;
 }
 
 .blob {
@@ -36,9 +39,6 @@
 
 .container {
   position: relative;
-  height: 100vh;
-  min-height: 800px;
-  overflow-y: hidden;
   padding: 0 30px;
 }
 
